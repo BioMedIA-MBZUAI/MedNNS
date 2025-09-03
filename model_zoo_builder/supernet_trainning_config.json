@@ -1,0 +1,81 @@
+{
+  "batch_size": 32,
+  "description": "Progressive shrinking training with sandwich rule for OFA supernet on MedMNIST",
+  
+  "stages": {
+    "full_supernet": {
+      "description": "Full supernet training with maximum configuration",
+      "epochs": 50,
+      "lr": 0.1,
+      "scheduler": "cosine",
+      "validation_frequency": 1
+    },
+    
+    "depth_shrinking": {
+      "description": "Progressive depth shrinking training",
+      "sampling_config": {
+        "d": [[2], [2], [2], [2], [2]],
+        "e": [0.35],
+        "w": [[2], [2], [2], [2], [2], [2]]
+      },
+      "layer_progression": [
+        {
+          "description": "Enable depth variation for last layer",
+          "layers": [0,1,2,3,4],
+          "values": [0, 1, 2],
+          "epochs": 10,
+          "lr": 0.0005,
+          "dynamic_batch_size": 8,
+          "label_smoothing": 0.1
+        }
+      ]
+    },
+    
+    "width_shrinking": {
+      "description": "Progressive width shrinking training",
+      "layer_progression": [
+        {
+          "description": "Enable width variation for last width layer",
+          "layers": [0,1,2,3,4,5],
+          "values": [0, 1, 2],
+          "epochs": 10,
+          "lr": 0.0005,
+          "dynamic_batch_size": 8,
+          "label_smoothing": 0.1
+        }
+      ]
+    },
+    
+    "sandwich_rule": {
+      "description": "Final sandwich rule training with largest, smallest, and random subnets",
+      "epochs": 30,
+      "lr": 0.0001,
+      "dynamic_batch_size": 6,
+      "label_smoothing": 0.1,
+      "validation_frequency": 5,
+      "final_sampling_config": {
+        "d": [[0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2]],
+        "e": [0.2, 0.25, 0.35],
+        "w": [[0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2]]
+      }
+    }
+  },
+  
+  "optimization": {
+    "optimizer": "SGD",
+    "momentum": 0.9,
+    "weight_decay": 1e-4,
+    "scheduler": "cosine_annealing"
+  },
+  
+  "validation": {
+    "num_subnet_samples": 20,
+    "validation_frequency": 10
+  },
+  
+  "logging": {
+    "log_frequency": 100,
+    "save_frequency": 10,
+    "wandb_logging": false
+  }
+}

@@ -9,7 +9,6 @@ from torch.nn import CrossEntropyLoss
 from medmnist import INFO, Evaluator
 from medmnist import DermaMNIST, PneumoniaMNIST, PathMNIST, RetinaMNIST, BreastMNIST , BloodMNIST, ChestMNIST, OCTMNIST, OrganCMNIST, OrganSMNIST, OrganAMNIST, TissueMNIST
 import torchvision.transforms as transforms
-import wandb
 import torch.nn.functional as F
 import os
 from torchvision import transforms
@@ -78,4 +77,4 @@ def get_dataloaders(dataset_name, batch_size=32):
         'name': dataset_name
     }
 
-    return  train_dataset,val_loader, test_loader, data_info
+    return  train_loader,val_loader, test_loader, data_info
