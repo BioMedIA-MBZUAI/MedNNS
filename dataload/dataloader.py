@@ -16,15 +16,15 @@ import numpy as np
 
 # Mapping dataset names to their respective MedMNIST classes
 data_class_mapping = {
-    'PathMNIST': PathMNIST,# o
-    'ChestMNIST': ChestMNIST,# o
+    'PathMNIST': PathMNIST,# x
+    'ChestMNIST': ChestMNIST,# 
     'DermaMNIST': DermaMNIST, # X
-    'OCTMNIST': OCTMNIST,# o
-    'PneumoniaMNIST': PneumoniaMNIST,# o
-    'RetinaMNIST': RetinaMNIST,# X
+    'OCTMNIST': OCTMNIST,# x
+    'PneumoniaMNIST': PneumoniaMNIST,# x
+    'RetinaMNIST': RetinaMNIST,# 
     'BreastMNIST': BreastMNIST,# X
     'BloodMNIST': BloodMNIST,# X
-    'TissueMNIST': TissueMNIST,# o
+    'TissueMNIST': TissueMNIST,# 
     'OrganAMNIST': OrganAMNIST,# o
     'OrganCMNIST': OrganCMNIST, # X
     'OrganSMNIST': OrganSMNIST # X

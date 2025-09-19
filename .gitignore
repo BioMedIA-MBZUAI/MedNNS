@@ -3,3 +3,7 @@ torch/
 work_dir/
 .torch/
 __pycache__/
+*.out
+*.log
+*.pth
+*.sh
