@@ -76,6 +76,6 @@ If you use this code, please cite:
   year={2025}
 }
 ```
-
+## License
 This code and processed meta-space are made publicly available for academic research.
 ```
