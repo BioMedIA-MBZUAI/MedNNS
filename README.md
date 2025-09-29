@@ -25,7 +25,7 @@ Our framework supports selecting the most suitable pretrained architecture and i
 - **Plug-and-Play:** Easily query the meta-space for any new dataset to select and fine-tune the best architecture with pretrained weights.
 - **Benchmark Results:** Outperforms ImageNet-transfer and NAS baselines on MedMNIST and other benchmarks.
 
-![MedNNS Overview](./MedNNS_main.png)  
+![MedNNS Overview](./MedNNS-main.png)  
 **Figure: MedNNS Meta Space.** 
 
 ---
