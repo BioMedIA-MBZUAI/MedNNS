@@ -30,7 +30,7 @@ data_class_mapping = {
     'OrganSMNIST': OrganSMNIST # X
 }
 
-def get_dataloaders(dataset_name, batch_size=32):
+def get_dataloaders(dataset_name, batch_size=32, ignore_train=False):
     """
     Load MedMNIST dataset based on the dataset name and return dataloaders.
 
@@ -61,19 +61,24 @@ def get_dataloaders(dataset_name, batch_size=32):
     ])
 
     # Download and prepare data
-    train_dataset = DatasetClass(split='train', transform=train_transform, download=True)
+    if not ignore_train:
+        train_dataset = DatasetClass(split='train', transform=train_transform, download=True)
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
+    else:
+        train_loader = None
+
     val_dataset = DatasetClass(split='val', transform=val_test_transform, download=True)
     test_dataset = DatasetClass(split='test', transform=val_test_transform, download=True)
 
     # Dataloaders
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
+    
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
 
     # Data information
     data_info = {
-        'num_classes': len(np.unique(train_dataset.labels)),
-        'image_size': train_dataset[0][0].shape,  # Shape of the
+        'num_classes': len(np.unique(val_dataset.labels)),
+        'image_size': val_dataset[0][0].shape,  # Shape of the
         'name': dataset_name
     }
 

@@ -1,5 +1,5 @@
 import torch
-from model_zoo_builder import create_and_save_model
+from Supernet_trainning import create_and_save_model
 import argparse
 
 if __name__ == "__main__":
