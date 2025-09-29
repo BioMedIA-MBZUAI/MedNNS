@@ -25,6 +25,9 @@ Our framework supports selecting the most suitable pretrained architecture and i
 - **Plug-and-Play:** Easily query the meta-space for any new dataset to select and fine-tune the best architecture with pretrained weights.
 - **Benchmark Results:** Outperforms ImageNet-transfer and NAS baselines on MedMNIST and other benchmarks.
 
+![MedNNS Overview](./MedNNS_main.png)  
+**Figure: MedNNS Meta Space.** 
+
 ---
 
 ## Installation
@@ -40,18 +43,18 @@ Our framework supports selecting the most suitable pretrained architecture and i
 
 ---
 
-## Usage  🚧 *In Progress*  
+## Usage
 
 We are actively updating this section with detailed instructions and examples.  
 For now, the basic workflow is:
 
 1. **Train a Supernet on your dataset:**
 
-       python train_supernet.py --dataset <DATASET_NAME> --gpu <GPU_ID>
+       python train_supernet.py --dataset <DATASET_NAME> --gpu <GPU_ID> --config ./Supernet_Trainning/supernet_trainning_config.json
 
 2. **Extract subnetworks and build the model zoo:**
 
-       python extract_subnetworks.py --supernet_ckpt <CHECKPOINT_PATH>
+       python build_model_zoo.py --supernet_ckpt <CHECKPOINT_PATH>
 
 3. **Construct the meta-space:**
 
@@ -63,14 +66,9 @@ For now, the basic workflow is:
 
 ---
 
-## Example  🚧 *In Progress*  
+## Example (*In Progress*)  
 
 We will release more detailed runnable examples soon.  
-For MedMNIST experiments:
-
-       python train_supernet.py --dataset organmnist_axial
-       python build_meta_space.py --zoo_dir ./zoo
-       python query_meta_space.py --new_dataset ./MedMNIST/dermamnist
 
 ---
 
@@ -100,7 +98,6 @@ If you use this code, please cite:
 - Some sections (Usage, Examples) are **still being expanded** and will be updated soon.  
 - Please check back regularly for the latest updates.  
 
-}
 ```
 ## License
 This code and processed meta-space are made publicly available for academic research.
