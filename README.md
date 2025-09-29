@@ -14,7 +14,7 @@ It addresses the dual challenge of **architecture selection** and **weight initi
 Our framework supports selecting the most suitable pretrained architecture and initialization for a new task, accelerating convergence, and improving performance compared to SOTA NAS and transfer learning approaches.  
 
 ![MedNNS Overview](./MedNNS_Overview.png)  
-*Figure: High-level overview of the MedNNS framework.*  
+**Figure: Overview of the MedNNS framework.**  
 
 ---
 
